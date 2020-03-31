@@ -1,0 +1,146 @@
+@import "~bootstrap/scss/bootstrap";
+
+@mixin transition($css, $time, $easing, $delay) {
+  transition: $css $time $easing $delay;
+}
+
+@mixin simpleAnimate($css) {
+  @include transition($css, 0.4s, ease-out, 0s);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+
+strong {
+  margin-right: 1rem;
+}
+
+.comment {
+  margin-top: 10px;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.selectedLike {
+  cursor: default;
+  filter: invert(68%) sepia(69%) saturate(395%) hue-rotate(85deg) brightness(90%) contrast(90%);
+}
+
+.alert {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 56px;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  @include simpleAnimate(all)
+}
+
+.alert-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.alert-enter {
+  opacity: 0;
+}
+
+.alert-enter-active {
+  transition: opacity 500ms ease-out;
+  opacity: 1;
+}
+
+.alert-exit-active {
+  transition: opacity 350ms ease-out;
+  opacity: 0;
+}
+
+.note-exit-active {
+  animation: note 800ms ease-out forwards;
+}
+
+.note-enter-active {
+  animation: note 800ms ease-in alternate-reverse;
+}
+
+@keyframes note {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: .7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
+
+.likeActive {
+  cursor: pointer;
+  filter: invert(67%) sepia(73%) saturate(420%) hue-rotate(6deg) brightness(93%) contrast(86%);
+}
+
+ul {
+  padding-left: 0;
+}
+
+label {
+  white-space: nowrap;
+}
+
+nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.mainWrapper {
+  margin-top: 80px;
+}
+
+.fileUpload {
+  padding-top: 4px;
+  padding-left: 0;
+  width: 300px;
+  border: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.imageRating {
+  border-radius: 50%;
+}
+
+.loaderWrapper {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%
+}
+
+.assessmentComment {
+  word-break: break-word;
+}
+
