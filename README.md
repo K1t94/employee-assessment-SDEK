@@ -1,3 +1,16 @@
+## Env - variables
+
+For correct work of the project, it is necessary to register your data from the Firebase (https://firebase.google.com)
+in the main directory of the project in .env.local. <br>
+Example:
+
+REACT_APP_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+REACT_APP_AUTH_DOMAIN=XXXXXXXXXXXXXXXXXXXXXXXXx.firebaseapp.com
+REACT_APP_DATABASE_URL=https://XXXXXXXXXXXXXXXXXXxxx.firebaseio.com
+REACT_APP_PROJECT_ID=XXXXXXXXXXXXXXXXXxx
+REACT_APP_STORAGE_BUCKET=gs://XXXXXXXXXXXx.appspot.com
+REACT_APP_MESSAGING_SENDER_ID=XXXXXXXXXx
+
 ## Available Scripts
 
 In the project directory, you can run:
