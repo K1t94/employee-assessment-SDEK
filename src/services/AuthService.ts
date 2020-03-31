@@ -20,7 +20,7 @@ class AuthService {
         return this.fbAuth.dataContext.loggedIn
     }
 
-    showAlertError(error: Error) {
+    showAlertError(error: Error): void {
         this.alertService.showAlert(error.message, 'danger')
     }
 
@@ -53,7 +53,7 @@ class AuthService {
     async registerAndPutInTheDatabase({email, password, firstName, lastName, department, position, image}: IRegData): Promise<void> {
         try {
             if (!email || !password || !firstName || !lastName || !department || !position || !image) {
-                throw new  Error('Не все поля заполнены.')
+                throw new Error('Не все поля заполнены.')
             }
 
             if (password.length < 6) {

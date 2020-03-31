@@ -5,6 +5,7 @@ import FirebaseDatabase from "../firebase/FirebaseDatabase"
 import {DataContext} from "../context/dataContext"
 import AlertService from "./AlertService"
 import FirebaseStorage from "../firebase/FirebaseStorage"
+import {Rating} from "../models/Rating"
 
 class UsersService {
     @inject fbDatabase: FirebaseDatabase;
@@ -45,7 +46,7 @@ class UsersService {
 
     myCountOfLikes(employeeRatings: any[]): number {
         return (employeeRatings.length && employeeRatings || [0])
-            .map((rating: any) => rating.fromUser === this.authUserId ? rating.countsOfLikes : 0)
+            .map((rating: Rating) => rating.fromUser === this.authUserId ? rating.countsOfLikes : 0)
             .reduce((accumulator: number, currentValue: number) => accumulator + currentValue);
     }
 

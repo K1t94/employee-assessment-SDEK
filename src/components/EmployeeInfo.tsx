@@ -59,12 +59,7 @@ export const EmployeeInfo = ({ user }: IAssessmentProps) => {
     };
 
     const submit = (uid: string, countOfLikes: number) => {
-        if (
-            countOfLikes - myCountOfLikes === 0 ||
-            countOfLikes - myCountOfLikes < 0
-        ) {
-            return;
-        }
+        if (countOfLikes - myCountOfLikes <= 0) return;
 
         usersService
             .sendRating(uid, countOfLikes - myCountOfLikes, comment)

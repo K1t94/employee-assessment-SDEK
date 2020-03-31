@@ -4,7 +4,7 @@ import {useInstance} from "react-ioc"
 import {UsersService} from "../services"
 import {FileInput} from "../components/FileInput"
 
-export const About = observer(() => {
+export const Profile = observer(() => {
     const usersService = useInstance(UsersService);
 
     const {

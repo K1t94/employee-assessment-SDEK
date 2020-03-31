@@ -12,6 +12,7 @@ import {Navbar} from "./components/Navbar"
 import {Main} from "./components/Main"
 import {Loader} from "./components/Loader"
 import {Alert} from "./components/Alert"
+import {Locations} from "./core/locations"
 
 const defaultModule = module => ({ default: module });
 
@@ -20,9 +21,9 @@ const List = lazy(async () => {
     return defaultModule(module.List);
 });
 
-const About = lazy(async () => {
-    const module = await import('./pages/About');
-    return defaultModule(module.About);
+const Profile = lazy(async () => {
+    const module = await import('./pages/Profile');
+    return defaultModule(module.Profile);
 });
 
 const Login = lazy(async () => {
@@ -77,12 +78,12 @@ class App extends Component {
                             <Alert />
                             <Switch>
                                 <Suspense fallback={<Loader />}>
-                                    <Route path={'/list'} exact component={List} />
-                                    <Route path={'/about'} component={About} />
-                                    <Route path={'/login'} component={Login} />
-                                    <Route path={'/registration'} component={Registration} />
-                                    <Route path={'/history'} component={Histories} />
-                                    <Route path={'/rating'} component={Rating} />
+                                    <Route path={Locations.LIST} component={List} />
+                                    <Route path={Locations.PROFILE} exact component={Profile} />
+                                    <Route path={Locations.LOGIN} component={Login} />
+                                    <Route path={Locations.REGISTRATION} component={Registration} />
+                                    <Route path={Locations.HISTORY} component={Histories} />
+                                    <Route path={Locations.RATING} component={Rating} />
                                 </Suspense>
                             </Switch>
                         </Main>

@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom'
 import {useInstance} from "react-ioc"
 import {AuthService} from "../services"
 import {observer} from "mobx-react"
+import {Locations} from "../core/locations"
 
 export const Navbar = observer(({ children }): JSX.Element => {
     const authService = useInstance(AuthService);
@@ -12,14 +13,16 @@ export const Navbar = observer(({ children }): JSX.Element => {
             <div className="nav-item">
                 <NavLink
                     className="nav-link"
-                    to="/registration">
+                    to={Locations.REGISTRATION}
+                >
                     Registration
                 </NavLink>
             </div>
             <div className="nav-item">
                 <NavLink
                     className="nav-link"
-                    to="/login">
+                    to={Locations.LOGIN}
+                >
                     Sign In
                 </NavLink>
             </div>
@@ -31,12 +34,18 @@ export const Navbar = observer(({ children }): JSX.Element => {
             <div className="nav-item">
                 <NavLink
                     className="nav-link"
-                    to="/about">
-                    Information
+                    to={Locations.PROFILE}
+                >
+                    Profile
                 </NavLink>
             </div>
             <div className="nav-item">
-                <NavLink className="nav-link" to="/list">List</NavLink>
+                <NavLink
+                    className="nav-link"
+                    to={Locations.LIST}
+                >
+                    List
+                </NavLink>
             </div>
             <div className="nav-item">
                 <button
@@ -59,14 +68,15 @@ export const Navbar = observer(({ children }): JSX.Element => {
                     <div className="nav-item">
                         <NavLink
                             className="nav-link"
-                            to="/history">
+                            to={Locations.HISTORY}>
                             History
                         </NavLink>
                     </div>
                     <div className="nav-item">
                         <NavLink
                             className="nav-link"
-                            to="/rating">
+                            to={Locations.RATING}
+                        >
                             Rating
                         </NavLink>
                     </div>

@@ -3,6 +3,7 @@ import {useRouter} from "../hooks/useRouter"
 import {useInstance} from "react-ioc"
 import {observer} from "mobx-react"
 import {AuthService} from "../services"
+import {Locations} from "../core/locations"
 
 export const Main = observer(({ children }) => {
     const { loggedIn } = useInstance(AuthService);
@@ -10,9 +11,9 @@ export const Main = observer(({ children }) => {
 
     useEffect(() => {
         if (loggedIn) {
-            router.push('/list')
+            router.push(Locations.PROFILE)
         } else {
-            router.push('/login')
+            router.push(Locations.LOGIN)
         }
     }, [loggedIn]);
 

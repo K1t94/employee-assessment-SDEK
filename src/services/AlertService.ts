@@ -1,10 +1,12 @@
 import {action, observable} from "mobx"
 
 interface IAlert {
-    type?: string,
+    type?: AlertType,
     text?: string,
     visible: boolean,
 }
+
+type AlertType = 'warning' | 'success' | 'danger';
 
 class AlertService {
     @observable
@@ -13,7 +15,7 @@ class AlertService {
     };
 
     @action
-    showAlert(text: string, type = 'warning') {
+    showAlert(text: string, type: AlertType = 'warning') {
        this.alert = {
            text,
            type,
