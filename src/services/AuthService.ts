@@ -7,6 +7,7 @@ import FirebaseStorage from "../firebase/FirebaseStorage"
 import FirebaseDatabase from "../firebase/FirebaseDatabase"
 import {IRegData} from "../pages/Registration"
 import StorageService from "./StorageService"
+import {User} from "../models";
 
 class AuthService {
     @inject fbAuth: FirebaseAuth;
@@ -69,7 +70,7 @@ class AuthService {
             const fireBaseImgUrl: string = await this.fbStorage.addImageWithLinkReturn(image);
 
             await this.fbDatabase.user(authUser.user.uid)
-                .set({
+                .set(User.create({
                     email,
                     firstName,
                     lastName,
@@ -78,7 +79,7 @@ class AuthService {
                     stockOfLikes: 3,
                     likes: 0,
                     fireBaseImgUrl,
-                });
+                }));
         } catch (e) {
             this.showAlertError(e)
         }

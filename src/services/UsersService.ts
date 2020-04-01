@@ -86,12 +86,12 @@ class UsersService {
             if (stockOfLikes >= setLikes) {
                 stockOfLikes = stockOfLikes - setLikes;
 
-                const rating: Record<string, string | number> = {
+                const rating: Rating = Rating.create({
                     fromUser: this.authUserId,
                     createdAtComment: new Date().toJSON(),
                     comment,
                     countsOfLikes: setLikes,
-                };
+                });
 
                 let ratingsLength = 0;
 
@@ -106,7 +106,10 @@ class UsersService {
                     .set(rating);
 
                 await this.fbDatabase.addHistory(this.histories.length)
-                    .set({ ...rating, toUser: uid });
+                    .set(History.create({
+                        ...rating,
+                        toUser: uid,
+                    }));
 
                 await this.fbDatabase.user(uid)
                     .update({

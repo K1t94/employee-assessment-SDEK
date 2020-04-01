@@ -3,7 +3,7 @@ import {useInstance} from "react-ioc"
 import {AlertService} from "../services"
 
 interface IFileInputProps {
-    onChange: (files: File) => void
+    onChange: (file: File) => void
 }
 
 export const FileInput = ({ onChange }: IFileInputProps) => {
